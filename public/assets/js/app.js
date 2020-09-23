@@ -4,8 +4,8 @@ $(document).on("click", "#scrape", function() {
       method: "GET",
       url: "/scrape"
     })
-    console.log(data[i]);
-    res.redirect("/");
+    console.log("");
+    // res.redirect("/");
   
   });
   
@@ -13,22 +13,22 @@ $(document).on("click", "#scrape", function() {
   
       for (var i = 0; i < data.length; i++) {
           
-          var dataId="<p data-id='" + data[i]._id + "'>";
-          var articleTitle = "<h4>" + data[i].title + "</h4>";
-          var articleSummary = "<p>" + data[i].summary + "</p>";
-          var commentBtn = "<button class='btn btn-outline-success' data-id='" + data[i]._id + "' data-toggle='modal' data-target='#noteModal' id='addComment' type='submit'>Add Comment</button>";
-          var articleLink = "<a href='" + data[i].link + "'>" + "<p>" + data[i].link; + "</a></p>";
-          var note = "";
-          if ('note' in data[i]) {
-            note = data[i].note.title + "<br>" + data[i].note.body;
-          }
-          var noteDiv = "<div id='notes'><p>Comments:<br>" + note + "</p></div>";
+          // var dataId="<p data-id='" + data[i]._id + "'>";
+          // var articleTitle = "<h4>" + data[i].title + "</h4>";
+          // var articleSummary = "<p>" + data[i].summary + "</p>";
+          // var commentBtn = "<button class='btn btn-outline-success' data-id='" + data[i]._id + "' data-toggle='modal' data-target='#noteModal' id='addComment' type='submit'>Add Comment</button>";
+          var link = "<a href='" + data[i].link + "'>" + "<p>" + data[i].link; + "</a></p>";
+          // var note = "";
+          // if ('note' in data[i]) {
+          //   note = data[i].note.title + "<br>" + data[i].note.body;
+          // }
+          // var noteDiv = "<div id='notes'><p>Comments:<br>" + note + "</p></div>";
   
-          var articleInfo = dataId + articleTitle + articleSummary + commentBtn + noteDiv + articleLink + "<hr>";
-          $("#articles").append(articleInfo);
+          // var articleInfo = dataId + articleTitle + articleSummary + commentBtn + noteDiv + articleLink + "<hr>";
+          // $("#articles").append(articleInfo);
   
       }
-      // console.log(JSON.stringify(data[i]));
+      console.log(JSON.stringify(data[i]));
     });
   
     $('#noteModal').on('show.bs.modal', function (event) {
@@ -74,7 +74,5 @@ $(document).on("click", "#scrape", function() {
           // $("#notes").append(data.note.title + data.note.body);
         });
     
-      // Also, remove the values entered in the input and textarea for note entry
-      // $("#titleinput").val("");
-      // $("#bodyinput").val("");
+    
     });

@@ -3,7 +3,6 @@ var exphbs = require('express-handlebars');
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-var ObjectId = require("mongoose").Types.ObjectId;
 var request = require("request");
 var cheerio = require("cheerio");
 
@@ -52,23 +51,18 @@ app.get("/", function(req, res) {
 // $(document).on("click", "#scrape", function() {
 app.get("/scrape", function(req, res) {
 
-  request("https://www.inquirer.com/economy/", function(error, response, html) {
+  request("https://www.nba.com/", function(error, response, html) {
     var $ = cheerio.load(html);
     console.log("html" + html);
 
-    $("article.story").each(function(i, element) {
-      var result = {};
+    $(".content_promo--title").each(function(i, element) {
+      var title = $(this).children("a").text();
+      var link = $(this).children("a").attr("href");
+      // result.title = $(this) .find("h2.headline").text().trim();
+      // result.link = $(this).find("a.story-link").attr("href");
+      // result.summary = $(this).find("p.summary").text().trim();
 
-      result.title = $(this)
-          .find("h2.headline").text().trim();
-
-      result.link = $(this)
-          .find("a.story-link").attr("href");
-
-      result.summary = $(this)
-          .find("p.summary").text().trim();
-
-      console.log(result);
+      console.log(title, link);
 
       db.Article.create(result)
         .then(function(dbArticle) {

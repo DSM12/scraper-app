@@ -1,0 +1,53 @@
+.navbar {
+    bottom:0;
+    width:100%;
+    background: red;
+    color: red;
+    padding: 1%;
+    margin-bottom: 0px;
+}
+
+.jumbotron {
+    background-image: url("../img/darksky-philly.jpg");
+    height: 500px;
+    color: white;
+}
+
+.caption {
+    padding-top: 14%;
+}
+
+.caption, h2 {
+    font-size: 250%;
+    color: red;
+}
+
+.caption, h3 {
+    font-size: 210%;
+    color: red;
+}
+
+.article-wrapper {
+    width: 80%;
+    border-style: solid;
+    border-width: thick;
+    border-color: #1e08e6;
+    margin-bottom: 3%;
+}
+
+#addComment {
+    float: right;
+}
+
+.collapse {
+    visibility: collapse;
+}
+
+footer {
+    position:relative;
+    bottom:0;
+    width:100%;
+    background: #1e08e6;
+    color: white;
+    padding: 1%;
+}
